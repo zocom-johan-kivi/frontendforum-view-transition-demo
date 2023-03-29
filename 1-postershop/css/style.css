@@ -1,0 +1,120 @@
+:root {
+  font-family: "Poppins", sans-serif;
+  --timing: 0.7s;
+}
+
+/* Typo */
+h1,
+h2,
+h3 {
+  margin: 0;
+  padding: 0;
+}
+
+p {
+  margin: 0;
+  font-weight: 300;
+  font-size: 0.9rem;
+  line-height: 160%;
+}
+
+body {
+  margin: 0;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  height: 3rem;
+  font-size: 0.7rem;
+  line-height: 100%;
+  gap: 1rem;
+  padding: 1rem;
+  color: rgba(100, 100, 100, 1);
+  view-transition-name: header;
+  contain: layout;
+}
+
+main#gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  max-width: 800px;
+  height: calc(100vh - 3rem);
+  margin: 0 auto;
+  width: 100%;
+  padding: 1rem;
+}
+
+main#gallery > article {
+  padding: 0.5rem;
+}
+
+main#gallery > article:hover {
+  background: #eee;
+  border-radius: 0.5rem;
+}
+
+main#gallery > article > img {
+  width: 100%;
+  border-radius: 0.25rem;
+  contain: layout;
+}
+
+main#single {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 420px;
+  height: calc(100vh - 3rem);
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+main#single article {
+  margin: auto;
+}
+
+main#single article img {
+  width: 100%;
+  border-radius: 0.25rem;
+}
+
+main#single article h2 {
+  font-size: 2rem;
+}
+
+main#single article button {
+  appearance: none;
+  padding: 0.75rem 1rem;
+  background-color: #222;
+  color: #eee;
+  border: none;
+  border-radius: 0.2rem;
+  margin-top: 1rem;
+  font-size: 1rem;
+  opacity: 0.9;
+  transition: all 0.2s ease;
+}
+
+main#single article button:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+
+#gallery.hide,
+#single.hide {
+  display: none;
+}
+
+@media screen and (max-width: 720px) {
+  main#gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  main#gallery {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}

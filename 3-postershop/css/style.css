@@ -1,0 +1,173 @@
+:root {
+  font-family: "Poppins", sans-serif;
+  --timing: 0.2s;
+}
+
+/* Typo */
+h1,
+h2,
+h3 {
+  margin: 0;
+  padding: 0;
+}
+
+p {
+  margin: 0;
+  font-weight: 300;
+  font-size: 0.9rem;
+  line-height: 160%;
+}
+
+body {
+  margin: 0;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  max-width: 800px;
+  box-sizing: border-box;
+  margin: 0 auto;
+  height: 3rem;
+  font-size: 1rem;
+  line-height: 100%;
+  gap: 1rem;
+}
+
+main#gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  max-width: 800px;
+  height: calc(100vh - 3rem);
+  margin: 0 auto;
+  width: 100%;
+}
+
+main#gallery > article {
+  padding: 0.5rem;
+}
+
+main#gallery > article:hover {
+  background: #eee;
+  border-radius: 0.5rem;
+}
+
+main#gallery > article > img {
+  width: 100%;
+  border-radius: 0.25rem;
+  contain: layout;
+}
+
+main#single {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 420px;
+  height: calc(100vh - 3rem);
+  margin: 0 auto;
+}
+
+main#single article {
+  margin: auto;
+}
+
+main#single article img {
+  width: 100%;
+  view-transition-name: poster-img;
+  contain: layout;
+  border-radius: 0.25rem;
+}
+
+main#single article h2 {
+  font-size: 2rem;
+  view-transition-name: poster-title;
+  contain: layout;
+}
+
+main#single article p {
+  view-transition-name: poster-desc;
+  contain: layout;
+}
+
+main#single article button {
+  appearance: none;
+  padding: 0.75rem 1rem;
+  background-color: #222;
+  color: #eee;
+  border: none;
+  border-radius: 0.2rem;
+  margin-top: 1rem;
+  font-size: 1rem;
+}
+
+#gallery.hide,
+#single.hide {
+  display: none;
+}
+
+@media screen and (max-width: 720px) {
+  main#gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  main#gallery {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateX(2rem);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0rem);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-out {
+  from {
+    transform: translateX(0rem);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(2rem);
+    opacity: 0;
+  }
+}
+
+::view-transition-old(root) {
+  animation-duration: var(--timing);
+}
+
+::view-transition-new(root) {
+  animation-duration: var(--timing);
+}
+
+::view-transition-old(poster-img),
+::view-transition-new(poster-img) {
+  animation-duration: var(--timing);
+}
+
+::view-transition-old(poster-desc) {
+  animation-duration: var(--timing);
+  animation-name: slide-out;
+}
+::view-transition-new(poster-desc) {
+  animation-duration: var(--timing);
+  animation-delay: calc(var(--timing) * 1.5);
+  animation-name: slide-in;
+}
+
+::view-transition-old(poster-title) {
+  animation-duration: var(--timing);
+  animation-name: slide-out;
+}
+::view-transition-new(poster-title) {
+  animation-duration: var(--timing);
+  animation-delay: var(--timing);
+  animation-name: slide-in;
+}
