@@ -40,8 +40,11 @@ const app = {
         // Gallery events
         this.el.posters.forEach(article => {
             article.addEventListener('click', (e) => {
-                this.setSelectedPoster(e);
-                this.toggleViews()
+                if(e.target.nodeName === 'IMG'){ // Only click on img
+                    this.setSelectedPoster(e);
+                    e.target.style.viewTransitionName = 'poster-img';
+                    document.startViewTransition(() => this.toggleViews());
+                }
             })
         })
     },
